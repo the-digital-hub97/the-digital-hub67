@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07070a">
+<title>The Digital Hub</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:#f7f7f8;background:#050507;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:-30%;background:radial-gradient(circle at 50% 15%,rgba(154,120,255,.22),transparent 25%),radial-gradient(circle at 10% 60%,rgba(69,130,255,.10),transparent 25%);filter:blur(30px);pointer-events:none}
+.wrap{position:relative;width:min(100%,540px);margin:auto;padding:42px 20px 34px}
+.hero{text-align:center;animation:up .7s ease both}.logo{position:relative;width:86px;height:86px;margin:0 auto 20px;border:1px solid rgba(255,255,255,.16);border-radius:28px;background:linear-gradient(145deg,#242031,#0e0e14);display:grid;place-items:center;box-shadow:0 25px 70px rgba(0,0,0,.6),inset 0 1px rgba(255,255,255,.12)}.logo:after{content:"";position:absolute;inset:-7px;border-radius:34px;border:1px solid rgba(188,167,255,.08)}.logo span{font-size:34px;background:linear-gradient(135deg,#fff,#bca7ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1{margin:0;font-size:30px;letter-spacing:3px;font-weight:800}.tag{margin:10px 0 28px;color:#a9a8b4;font-size:13px;letter-spacing:.5px}
+.links{display:grid;gap:13px}.link{display:flex;align-items:center;gap:15px;min-height:76px;padding:14px 16px;border:1px solid rgba(255,255,255,.10);border-radius:21px;background:linear-gradient(135deg,rgba(255,255,255,.085),rgba(255,255,255,.025));color:#fff;text-decoration:none;box-shadow:0 14px 38px rgba(0,0,0,.34);backdrop-filter:blur(18px);transition:transform .25s ease,border-color .25s ease,background .25s ease;animation:up .6s ease both}.link:nth-child(2){animation-delay:.06s}.link:nth-child(3){animation-delay:.12s}.link:nth-child(4){animation-delay:.18s}.link:nth-child(5){animation-delay:.24s}.link:not(.disabled):hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22);background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.04))}.ico{width:47px;height:47px;flex:0 0 47px;border-radius:15px;background:rgba(255,255,255,.07);display:grid;place-items:center;font-size:21px;border:1px solid rgba(255,255,255,.06)}.label{display:block;font-size:15px;font-weight:750}.sub{display:block;color:#92919d;font-size:12px;margin-top:4px}.arrow{margin-left:auto;color:#686772;font-size:24px}.disabled{opacity:.55;cursor:default}.badge{margin-left:auto;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#85838f;border:1px solid #ffffff12;padding:5px 8px;border-radius:999px}
+.bottom{display:flex;justify-content:center;gap:10px;margin-top:22px}.share{border:1px solid #ffffff12;background:#ffffff08;color:#bdbbc7;border-radius:999px;padding:10px 16px;font-size:12px;cursor:pointer}.footer{text-align:center;color:#5f5e68;font-size:10px;margin-top:24px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;background:#f7f7f8;color:#111;padding:11px 17px;border-radius:999px;font-size:12px;transition:.25s;pointer-events:none;box-shadow:0 10px 30px #0008}.toast.show{opacity:1;transform:translate(-50%,0)}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(max-width:380px){.wrap{padding-left:14px;padding-right:14px}h1{font-size:26px}.link{min-height:70px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="hero">
+  <div class="logo"><span>✦</span></div>
+  <h1>THE DIGITAL HUB</h1>
+  <p class="tag">Everything you need, in one place.</p>
+</header>
+
+<section class="links">
+<a class="link" href="https://www.instagram.com/the_digital_hub67" target="_blank" rel="noopener">
+  <span class="ico">◎</span><span><span class="label">Instagram</span><span class="sub">Follow us on Instagram</span></span><span class="arrow">›</span>
+</a>
+<a class="link" href="https://www.youtube.com/@the_digital_hub-zx" target="_blank" rel="noopener">
+  <span class="ico">▶</span><span><span class="label">YouTube</span><span class="sub">Watch & subscribe</span></span><span class="arrow">›</span>
+</a>
+<div class="link disabled"><span class="ico">f</span><span><span class="label">Facebook</span><span class="sub">Link will be added later</span></span><span class="badge">Soon</span></div>
+<div class="link disabled"><span class="ico">₹</span><span><span class="label">FamPay</span><span class="sub">Link will be added later</span></span><span class="badge">Soon</span></div>
+<div class="link disabled"><span class="ico">★</span><span><span class="label">Google Reviews</span><span class="sub">Link will be added later</span></span><span class="badge">Soon</span></div>
+</section>
+
+<div class="bottom"><button class="share" id="share">↗ Share The Digital Hub</button></div>
+<footer class="footer">© 2026 The Digital Hub · All rights reserved</footer>
+</main>
+<div class="toast" id="toast">Link copied</div>
+<script>
+const toast=document.getElementById("toast");
+document.getElementById("share").onclick=async()=>{
+ try{if(navigator.share){await navigator.share({title:"The Digital Hub",text:"Everything you need, in one place.",url:location.href})}else{throw 0}}
+ catch(e){try{await navigator.clipboard.writeText(location.href);toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),1800)}catch(_){}}
+};
+</script>
+</body>
+</html>
